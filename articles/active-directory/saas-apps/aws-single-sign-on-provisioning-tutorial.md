@@ -101,7 +101,7 @@ This section guides you through the steps to configure the Azure AD provisioning
 
 7. Select **Save**.
 
-8. Under the **Mappings** section, select **Synchronize Azure Active Directory Users to AWS IAM Identity Center**.
+8. Under the **Mappings** section, select **Provision Azure Active Directory Users**.
 
 9. Review the user attributes that are synchronized from Azure AD to AWS IAM Identity Center in the **Attribute-Mapping** section. The attributes selected as **Matching** properties are used to match the user accounts in AWS IAM Identity Center for update operations. If you choose to change the [matching target attribute](../app-provisioning/customize-application-attributes.md), you will need to ensure that the AWS IAM Identity Center API supports filtering users based on that attribute. Select the **Save** button to commit any changes.
 
@@ -133,7 +133,7 @@ This section guides you through the steps to configure the Azure AD provisioning
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Reference|
 
-10. Under the **Mappings** section, select **Synchronize Azure Active Directory Groups to AWS IAM Identity Center**.
+10. Under the **Mappings** section, select **Provision Azure Active Directory Groups**.
 
 11. Review the group attributes that are synchronized from Azure AD to AWS IAM Identity Center in the **Attribute-Mapping** section. The attributes selected as **Matching** properties are used to match the groups in AWS IAM Identity Center for update operations. Select the **Save** button to commit any changes.
 
