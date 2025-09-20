@@ -128,6 +128,37 @@ Register the service principal for Azure Front Door as an app in your Microsoft 
 
 #### Grant Azure Front Door access to your key vault
 
+Grant Azure Front Door Access to Key Vault Certificates Using RBAC
+
+1. Enable Managed Identity for Azure Front Door
+Go to your Azure Front Door Standard/Premium profile in the Azure Portal.
+Under Security, select Identity.
+Enable System-assigned managed identity.
+Note the Object (principal) ID (e.g., 205478c0-bd83-4e1b-a9d6-db63a3e1e1c8).
+2. Assign Key Vault RBAC Role
+Go to your Key Vault in the Azure Portal.
+In the left menu, select Access control (IAM).
+Click + Add > Add role assignment.
+For Role, select Key Vault Secrets User.
+For Assign access to, choose Managed identity.
+In Select members, search for and select the Azure Front Door managed identity (use the Object ID if needed).
+Click Review + assign.
+3. (Optional) Azure CLI Example
+
+PowerShell
+az role assignment create `
+  --assignee-object-id 205478c0-bd83-4e1b-a9d6-db63a3e1e1c8 `
+  --role "Key Vault Secrets User" `
+  --scope "/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.KeyVault/vaults/<vault-name>"
+
+Replace <sub-id>, <rg>, and <vault-name> with your actual values.
+
+4. Permissions Granted
+Key Vault Secrets User grants get access to both secrets and certificates.
+This is all Azure Front Door needs to retrieve certificates for TLS/SSL.
+
+Grant Azure Front Door Access to Key Vault Certificates Using Access policies
+
 Grant Azure Front Door permission to access the certificates in the new Key Vault account that you created specifically for Azure Front Door. You only need to give `GET` permission to the certificate and secret in order for Azure Front Door to retrieve the certificate.
 
 1. In your Key Vault account, select **Access policies**.
